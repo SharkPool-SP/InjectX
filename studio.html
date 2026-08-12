@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>InjectX</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="#00a6ff" data-react-helmet="true" name="theme-color" />
+    <meta content="InjectX" property="og:title" />
+    <meta
+      content="InjectX combines and compiles source code into a single script with the @InjectX comment command."
+      property="og:description"
+    />
+    <meta content="https://sharkpool-sp.github.io/InjectX/" property="og:url" />
+    <meta
+      content="https://sharkpool-sp.github.io/InjectX/assets/img/logo.png"
+      property="og:image"
+    />
+    <link rel="icon" href="./assets/img/logo.png" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/studio.css" />
+  </head>
+  <body data-mode="dark">
+    <nav class="sticky-nav">
+      <div class="nav-btn logo">
+        <img
+          draggable="false"
+          src="./assets/img/logo-white.svg"
+          alt="InjectX Logo"
+        />
+        <span>InjectX</span>
+      </div>
+      <div class="nav-btn" id="theme-btn">
+        <img draggable="false" src="./assets/img/dark.svg" alt="Theme" />
+      </div>
+      <a class="nav-btn" href="/">
+        <img draggable="false" src="./assets/img/home.svg" alt="Home" />
+        <span>Home</span>
+      </a>
+      <a
+        class="nav-btn"
+        href="https://github.com/SharkPool/InjectX"
+        target="_blank"
+      >
+        <img draggable="false" src="./assets/img/github.svg" alt="GitHub" />
+        <span>GitHub</span>
+      </a>
+      <a
+        class="nav-btn"
+        href="https://sharkpool-sp.github.io/donations/"
+        target="_blank"
+      >
+        <img draggable="false" src="./assets/img/heart.svg" alt="Donate" />
+        <span>Donate</span>
+      </a>
+    </nav>
+    <main>Loading...</main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.43.3/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.43.3/ext-language_tools.js"></script>
+    <script src="./scripts/Events.js"></script>
+    <script src="./scripts/startup.js" type="module"></script>
+    <script src="./scripts/studio.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+main.css
+- Mobile support
+- Custom Scrollbar
+
+- modal popup??
+- Show InjectX errors?
+
+Repo page:
+- ...
+
+README.md

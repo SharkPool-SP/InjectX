@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=SN+Pro&display=swap");
+
+body {
+  --nav-theme: #1e222b;
+  --bg-theme: #f4f6f8;
+  --text-theme: #322635;
+  --shadow-theme: rgba(0, 0, 0, 0.1);
+  --nav-height: 70px;
+
+  margin: 0;
+  padding: 0;
+  background: var(--bg-theme);
+  color: var(--text-theme);
+  font-family: "SN Pro", sans-serif;
+}
+body[data-mode="dark"] {
+  --bg-theme: #12141c;
+  --text-theme: #fff;
+  --shadow-theme: rgba(30, 34, 43, 0.4);
+}
+
+/* Navigation Bar */
+.sticky-nav {
+  display: flex;
+  align-items: right;
+  background: var(--nav-theme);
+  box-shadow: 0 0px 30px #000;
+  width: 100%;
+  height: var(--nav-height);
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: var(--nav-height);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+.nav-btn img {
+  width: 35px;
+  height: 35px;
+}
+.nav-btn:not(.logo):hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-btn.logo {
+  justify-content: left;
+  width: 200%;
+  margin-left: 20px;
+  border-right: 1.5px dashed rgba(255, 255, 255, 0.15);
+}
+.nav-btn.logo img {
+  width: 50px;
+  height: 50px;
+  transform: scale(1.5);
+  margin-right: 15px;
+}
+.nav-btn.logo span {
+  font-size: 2rem;
+  font-weight: bolder;
+  text-shadow: 0 0 15px #ab3bca;
+  letter-spacing: 1px;
+}
+
+/* Main Content */
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.node {
+  color: rgb(168, 31, 206);
+  text-shadow: 0 0 10px rgba(221, 0, 255, 0.6);
+}
+.node[data-mode="dark"] {
+  color: rgb(217, 80, 255);
+}
+
+body .logo-light {
+  display: none;
+}
+body[data-mode="dark"] .logo-light {
+  display: block;
+}
+body[data-mode="dark"] .logo-dark {
+  display: none;
+}
+
+[class*="content"]:not([class*="ace"]) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+  max-width: 80vw;
+}
+.content-row {
+  flex-direction: row !important;
+}
+
+.compact {
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 20px !important;
+}
+
+.right-nav {
+  width: 100%;
+  justify-content: right !important;
+  gap: 20px;
+}
+
+.box {
+  background: var(--shadow-theme);
+  padding: 15px 30px;
+  border-radius: 25px;
+  box-shadow: inset #ff7bff50 0 -5px 20px;
+}
+body[data-mode="dark"] .box {
+  box-shadow: inset #99009950 0 -5px 20px;
+}
+
+.content .title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 10px;
+  text-shadow: 0 3px 8px #ff00ff60;
+}
+
+.content .desc {
+  background: var(--shadow-theme);
+  margin: 0 0 10px 0;
+  padding: 15px 25px;
+  border-radius: 10px;
+  gap: 15px;
+}
+
+/* Buttons */
+[class*="btn"]:not(.nav-btn) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 0 20px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #d950ff, #ab3bca);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: none;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+[class*="btn"]:not(.nav-btn) img {
+  width: 40px;
+  height: 40px;
+}
+[class*="btn"]:not(.nav-btn):not([disabled]):hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #ab3bca;
+}
+
+.btn-small:not(.img-only) {
+  min-width: 100px;
+}
+.btn-small {
+  font-size: 90% !important;
+  letter-spacing: unset !important;
+  padding: 10px 15px !important;
+  margin: 0 !important;
+}
+
+[class*="content-row"][class*="compact"] .btn-small img {
+  width: 16px !important;
+  height: 16px !important;
+}
+[class*="content-row"]:not([class*="compact"]) .btn-small img {
+  width: 25px !important;
+  height: 25px !important;
+}
+
+[disabled] {
+  opacity: 0.75;
+  filter: brightness(0.5);
+  pointer-events: none;
+}
+
+.attachable-note {
+  position: absolute;
+  top: 115%;
+  left: 50%;
+  transform: translate(-50%, 0px);
+  color: var(--text-theme);
+  font-size: 0.9rem;
+  font-weight: normal;
+  text-wrap: nowrap;
+  opacity: 0.75;
+}
+
+input {
+  accent-color: #ab3bca;
+}
+
+/* Mobile Support */
+
+/* Custom Scrollbar */

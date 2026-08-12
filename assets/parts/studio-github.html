@@ -1,0 +1,125 @@
+<div class="content box">
+  <h1 class="title">Repository Injector</h1>
+  <div class="workspace-container">
+    <div class="desc">
+      <h3 class="sub-title">Repository</h3>
+      <div class="input-container">
+        <label>
+          <span>Repository URL</span>
+          <input
+            class="input"
+            type="url"
+            name="repo-url"
+            placeholder="https://github.com/username/repository"
+          />
+        </label>
+        <label>
+          <span>Branch</span>
+          <input class="input" type="text" name="branch" placeholder="main" />
+        </label>
+        <label>
+          <span>Module Directory</span>
+          <div class="input">
+            <span class="branch-display">main</span><span>/</span>
+            <input
+              class="inner-input"
+              type="text"
+              name="module-path"
+              placeholder="modules/"
+            />
+          </div>
+        </label>
+      </div>
+      <div class="content-row compact">
+        <button
+          disabled
+          class="btn-small img-only"
+          title="Fetch Repository"
+          id="get-repo"
+        >
+          <img
+            draggable="false"
+            src="./assets/img/read-repo.svg"
+            alt="Fetch Repo"
+          />
+        </button>
+        <h3 class="sub-title">Modules</h3>
+      </div>
+      <div class="list compact-list" id="module-list">
+        <div class="list-item" style="display: none">
+          <span>...</span>
+        </div>
+      </div>
+    </div>
+    <div class="desc wide">
+      <!-- prettier-ignore -->
+      <div id="editor"><textarea>No Repository Loaded!
+
+Fill in the Repository fields and click the Fetch button to start.</textarea></div>
+    </div>
+    <div class="desc">
+      <h3 class="sub-title">Output</h3>
+      <div class="content-row compact">
+        <button class="btn-small" id="inject-btn">Inject</button>
+        <button
+          disabled
+          class="btn-small img-only"
+          title="Download Modules"
+          id="download-module"
+        >
+          <img
+            draggable="false"
+            src="./assets/img/download.svg"
+            alt="Download"
+          />
+        </button>
+      </div>
+      <div class="list compact-list" id="output-list">
+        <div class="list-item" style="display: none">
+          <span>...</span>
+        </div>
+      </div>
+      <h3 class="sub-title">Advanced</h3>
+      <div class="input-container">
+        <label>
+          <input class="input" type="checkbox" name="create-pr" />
+          <span>Create Pull Request</span>
+        </label>
+        <label disabled>
+          <span>Injection Directory</span>
+          <div class="input">
+            <span class="branch-display">main</span><span>/</span>
+            <input
+              class="inner-input"
+              type="text"
+              name="inject-path"
+              placeholder="dist/"
+            />
+          </div>
+        </label>
+        <label disabled>
+          <span>GitHub Token</span>
+          <input class="input" type="text" name="token" placeholder="..." />
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content-row right-nav">
+  <button
+    disabled
+    class="btn-small img-only"
+    title="Create Pull Request"
+    id="submit-pr"
+  >
+    <img draggable="false" src="./assets/img/merge.svg" alt="Pull Request" />
+  </button>
+  <a
+    href="./studio.html"
+    class="btn-small img-only"
+    title="Switch to Code view"
+  >
+    <img draggable="false" src="./assets/img/arrow-right.svg" alt="go to" />
+    <img draggable="false" src="./assets/img/file.svg" alt="Code" />
+  </a>
+</div>

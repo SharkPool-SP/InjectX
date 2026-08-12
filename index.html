@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>InjectX</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="#00a6ff" data-react-helmet="true" name="theme-color" />
+    <meta content="InjectX" property="og:title" />
+    <meta
+      content="InjectX combines and compiles source code into a single script with the @InjectX comment command."
+      property="og:description"
+    />
+    <meta content="https://sharkpool-sp.github.io/InjectX/" property="og:url" />
+    <meta
+      content="https://sharkpool-sp.github.io/InjectX/assets/img/logo.png"
+      property="og:image"
+    />
+    <link rel="icon" href="./assets/img/logo.png" />
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body data-mode="dark">
+    <nav class="sticky-nav">
+      <div class="nav-btn logo">
+        <img
+          draggable="false"
+          src="./assets/img/logo-white.svg"
+          alt="InjectX Logo"
+        />
+        <span>InjectX</span>
+      </div>
+      <div class="nav-btn" id="theme-btn">
+        <img draggable="false" src="./assets/img/dark.svg" alt="Theme" />
+      </div>
+      <a class="nav-btn" href="/">
+        <img draggable="false" src="./assets/img/home.svg" alt="Home" />
+        <span>Home</span>
+      </a>
+      <a
+        class="nav-btn"
+        href="https://github.com/SharkPool/InjectX"
+        target="_blank"
+      >
+        <img draggable="false" src="./assets/img/github.svg" alt="GitHub" />
+        <span>GitHub</span>
+      </a>
+      <a
+        class="nav-btn"
+        href="https://sharkpool-sp.github.io/donations/"
+        target="_blank"
+      >
+        <img draggable="false" src="./assets/img/heart.svg" alt="Donate" />
+        <span>Donate</span>
+      </a>
+    </nav>
+    <main>
+      <div class="content box">
+        <img
+          class="logo-light"
+          draggable="false"
+          src="./assets/img/logo-white.svg"
+          alt="InjectX Logo"
+        />
+        <img
+          class="logo-dark"
+          draggable="false"
+          src="./assets/img/logo-black.svg"
+          alt="InjectX Logo"
+        />
+        <h1 class="title">InjectX</h1>
+        <p class="desc">
+          <b>InjectX</b> is a lightweight <i>script injector</i> and
+          <i>module linker</i>. It allows you to organize your source code into
+          reusable modules and compile them into a single output script using a
+          simple <code class="node">@InjectX</code> comment command.
+          <br /><br />
+          InjectX can be integrated into virtually any programming language or
+          text-based project since it works through comment-based commands
+          rather than language-specific parsing. Each
+          <code class="node">@InjectX</code> command is replaced with the
+          content of the module it references during compilation, making it easy
+          to maintain clean, modular source code while producing a fully
+          combined script for distribution. <br /><br />
+          Created by:
+          <b class="node">SharkPool</b>
+        </p>
+      </div>
+      <div class="content-row">
+        <a href="./studio.html" class="btn">
+          <img draggable="false" src="./assets/img/file.svg" alt="File" />
+          <span>Get Started</span>
+          <span class="attachable-note">(With Code)</span>
+        </a>
+        <a href="./studio.html?github" class="btn">
+          <img draggable="false" src="./assets/img/github.svg" alt="GitHub" />
+          <span>Get Started</span>
+          <span class="attachable-note">(With GitHub)</span>
+        </a>
+      </div>
+    </main>
+    <script src="./scripts/Events.js"></script>
+    <script src="./scripts/startup.js" type="module"></script>
+  </body>
+</html>

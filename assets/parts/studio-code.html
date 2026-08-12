@@ -1,0 +1,84 @@
+<div class="content box">
+  <h1 class="title">Injector Editor</h1>
+  <div class="workspace-container">
+    <div class="desc">
+      <h3 class="sub-title">Modules</h3>
+      <div class="content-row compact">
+        <button class="btn-small img-only" title="Add Module" id="add-module">
+          <img draggable="false" src="./assets/img/plus.svg" alt="Add Module" />
+        </button>
+        <button
+          class="btn-small img-only"
+          title="Upload Module"
+          id="upload-module"
+        >
+          <img
+            draggable="false"
+            src="./assets/img/upload.svg"
+            alt="Upload Module"
+          />
+          <input type="file" multiple style="display: none" />
+        </button>
+      </div>
+      <div class="list" id="module-list">
+        <div class="list-item" style="display: none">
+          <img
+            draggable="false"
+            src="./assets/img/trash.svg"
+            alt="Delete"
+            class="sub-img trash-item"
+          />
+          <img
+            draggable="false"
+            src="./assets/img/edit.svg"
+            alt="Edit"
+            class="sub-img edit-item"
+          />
+          <span>...</span>
+        </div>
+      </div>
+    </div>
+    <div class="desc wide">
+      <div id="editor">Loading...</div>
+    </div>
+    <div class="desc">
+      <h3 class="sub-title">Output</h3>
+      <div class="content-row compact">
+        <button class="btn-small" id="inject-btn">Inject</button>
+        <button
+          disabled
+          class="btn-small img-only"
+          title="Download Modules"
+          id="download-module"
+        >
+          <img
+            draggable="false"
+            src="./assets/img/download.svg"
+            alt="Download"
+          />
+        </button>
+      </div>
+      <div class="list" id="output-list">
+        <div class="list-item" style="display: none">
+          <span>...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="desc desc-header">
+    <span>
+      Use <code class="node">@InjectX &lt;module-name&gt;</code> on its own line
+      to replace it with another module's code.
+    </span>
+  </div>
+</div>
+<div class="content-row right-nav">
+  <a
+    href="./studio.html?github"
+    class="btn-small img-only"
+    title="Switch to GitHub view"
+  >
+    <img draggable="false" src="./assets/img/arrow-right.svg" alt="go to" />
+    <img draggable="false" src="./assets/img/github.svg" alt="GitHub" />
+  </a>
+</div>
