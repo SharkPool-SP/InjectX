@@ -1,4 +1,9 @@
 /* global ace, Events */
+
+/**
+ * TODO: Show custom modals instead of 'prompt' or 'alert'
+ */
+
 import { InjectX } from "../dist/InjectX.js";
 import { setup as setupCode } from "./studio-code.js";
 import { setup as setupGitHub } from "./studio-github.js";
@@ -27,6 +32,7 @@ const state = {
   injector: new InjectX(),
   modules: new Map(),
   compiledModules: new Map(),
+  isGitHubVersion: null,
   module: null,
   isViewingOutput: null,
   editor: null,
@@ -122,6 +128,16 @@ const editModuleName = function (moduleNode, newName) {
   Events.emit("EDITOR_MODE_CHANGED", newName);
 };
 
+/**
+ * Removes all modules from the module list.
+ */
+const removeAllModules = function () {
+  const children = Array.from(gui.moduleList.children);
+  for (let i = children.length - 1; i > 0; i--) {
+    children[i].remove();
+  }
+};
+
 const executeInject = async function () {
   state.compiledModules.clear();
   state.injector.clearModules();
@@ -136,13 +152,20 @@ const executeInject = async function () {
     item = iterator.next();
   }
 
-  const results = await state.injector.link();
+  try {
+    const results = await state.injector.link();
 
-  // Only show changed files
-  const changedFiles = results.filter(
-    (m) => m.src !== state.modules.get(m.name),
-  );
-  for (const module of changedFiles) newOutputModule(module.name, module.src);
+    // Only show changed files
+    const changedFiles = results.filter(
+      (m) => m.src !== state.modules.get(m.name),
+    );
+    for (const module of changedFiles) newOutputModule(module.name, module.src);
+
+    Events.emit("UPDATE_PR_BUTTON");
+  } catch (err) {
+    console.warn(err);
+    alert("Failed to Inject: " + err.message);
+  }
 };
 
 /**
@@ -167,6 +190,7 @@ const setupEditor = function () {
   state.editor = editor;
 
   editor.setFontSize(14);
+  editor.setReadOnly(state.isGitHubVersion);
   editor.setOptions({
     tabSize: 2,
     useSoftTabs: true,
@@ -217,6 +241,8 @@ const initStudio = async function () {
   document.querySelector("main").innerHTML = htmlPart;
 
   updateGuiState();
+  state.isGitHubVersion = isGitHubVersion;
+
   setupEditor();
   setupBasicUI();
   if (isGitHubVersion) setupGitHub();
@@ -295,6 +321,7 @@ Events.on("THEME_CHANGED", (mode) => {
 
 Events.on("NEW_MODULE", newModule);
 Events.on("NEW_OUTPUT", newModule);
+Events.on("REMOVE_ALL_MODULES", removeAllModules);
 
 Events.on("VIEW_STATE", (type, value) => {
   state.isViewingOutput = type === "output";
@@ -309,7 +336,7 @@ Events.on("UPDATE_EDITOR", () => {
 
   state.editor.session.setMode(mode);
   state.editor.session.setValue(code ?? "");
-  state.editor.setReadOnly(state.editorReadOnly);
+  state.editor.setReadOnly(state.isGitHubVersion || state.editorReadOnly);
 });
 
 Events.on("EDITOR_MODE_CHANGED", (fileName) => {

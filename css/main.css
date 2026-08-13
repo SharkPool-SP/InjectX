@@ -218,5 +218,67 @@ input {
 }
 
 /* Mobile Support */
+@media screen and (max-width: 768px) {
+  .nav-btn span {
+    display: none;
+  }
+
+  .nav-btn img {
+    max-width: 35px;
+    max-height: 35px;
+    width: 50%;
+    height: 50%;
+  }
+
+  .box {
+    padding: 15px 20px;
+  }
+
+  .btn {
+    padding: 15px 20px !important;
+    font-size: 0.7rem !important;
+  }
+  .btn img {
+    max-width: 40px;
+    max-height: 40px;
+    width: 30% !important;
+    height: 30% !important;
+  }
+}
 
 /* Custom Scrollbar */
+:root {
+  --scrollbar-width: 15px;
+  --scrollbar-radius: 5px;
+  --track-color: #f0e0f5;
+  --thumb-color: #ab3bca;
+  --thumb-shadow: #b475c5;
+}
+:root body[data-mode="dark"] {
+  --track-color: #130f16;
+  --thumb-shadow: #3b004d;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
+  background-color: var(--track-color);
+}
+::-webkit-scrollbar-track {
+  background-color: var(--track-color);
+}
+::-webkit-scrollbar-thumb {
+  border-radius: var(--scrollbar-radius);
+  border: 1.5px solid var(--bg-theme);
+  background: var(--thumb-color);
+  box-shadow: inset var(--thumb-shadow) 0 0 5px;
+}
+
+/* Firefox */
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: var(--thumb-color) var(--track-color);
+  }
+}

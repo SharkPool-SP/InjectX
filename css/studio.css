@@ -147,3 +147,18 @@ body[data-mode="light"] .list-item .sub-img {
   height: 100%;
   border-radius: 8px;
 }
+
+/* Mobile Support */
+@media screen and (max-width: 768px) {
+  .workspace-container {
+    flex-direction: column;
+  }
+
+  .workspace-container .desc {
+    width: calc(100% - 50px) !important;
+  }
+
+  #editor {
+    min-height: 500px;
+  }
+}

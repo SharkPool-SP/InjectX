@@ -4,7 +4,11 @@ import {
   extractRepoInfo,
   toggleDisable,
 } from "./utils.js";
-import { genDirectoryContentApi, getRepoFile } from "./github-interact.js";
+import {
+  genDirectoryContentApi,
+  getRepoFile,
+  createModulePullRequest,
+} from "./github-interact.js";
 
 /* global Events */
 const gui = {};
@@ -64,6 +68,7 @@ const _handleRepoInput = (event) => {
 };
 
 const _handleRepoFetch = async function () {
+  Events.emit("REMOVE_ALL_MODULES");
   gui.getRepoBtn.setAttribute("disabled", "");
 
   const { org, repo, branch } = extractRepoInfo(gitState.repo);
@@ -90,8 +95,25 @@ const _handleRepoFetch = async function () {
   }
 };
 
-const _handleCreatePR = function () {
-  // TODO
+const _handleCreatePR = async function () {
+  toggleDisable(gui.createPrBtn, true);
+
+  const { org, repo, branch } = extractRepoInfo(gitState.repo);
+  const status = await createModulePullRequest(
+    org,
+    repo,
+    branch ?? "main",
+    gitState.token,
+    gitState.srcDir,
+    state.compiledModules,
+  );
+
+  if (status.success) {
+    window.open(status.url, "_blank");
+    alert(status.msg);
+  } else {
+    alert("Error creating pull request: " + status.msg);
+  }
 };
 
 const setup = function () {
@@ -154,10 +176,17 @@ Events.on("REPO_FETCHED", () => {
 });
 
 Events.on("UPDATE_PR_BUTTON", () => {
-  toggleDisable(
-    gui.createPrBtn,
-    !(gitState.isPR && gitState.token && gitState.srcDir),
-  );
+  if (gui.createPrBtn) {
+    toggleDisable(
+      gui.createPrBtn,
+      !(
+        gitState.isPR &&
+        gitState.token &&
+        gitState.srcDir &&
+        state.compiledModules.size > 0
+      ),
+    );
+  }
 });
 
 export { setup };

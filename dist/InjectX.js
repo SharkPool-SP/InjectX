@@ -175,7 +175,8 @@ class InjectX {
         return compiledDep
           .split("\n")
           .map((l, i) => indent + l)
-          .join("\n");
+          .join("\n")
+          .trimEnd(); // remove empty lines
       });
 
       const compiledSrc = compiledLines.join("\n");
