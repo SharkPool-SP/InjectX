@@ -178,7 +178,8 @@ const updateGuiState = function () {
   gui.outputList = document.getElementById("output-list");
 
   try {
-    state.dark = localStorage.getItem("InjectX-theme") === "dark";
+    const storedState = localStorage.getItem("InjectX-theme");
+    state.dark = storedState === null || storedState === "dark";
   } catch {}
 };
 
