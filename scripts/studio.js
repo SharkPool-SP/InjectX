@@ -1,12 +1,8 @@
 /* global ace, Events */
-
-/**
- * TODO: Show custom modals instead of 'prompt' or 'alert'
- */
-
 import { InjectX } from "../dist/InjectX.js";
 import { setup as setupCode } from "./studio-code.js";
 import { setup as setupGitHub } from "./studio-github.js";
+import { prompt, alert } from "./modal.js";
 import {
   ioWrap,
   isValidModuleName,
@@ -164,7 +160,7 @@ const executeInject = async function () {
     Events.emit("UPDATE_PR_BUTTON");
   } catch (err) {
     console.warn(err);
-    alert("Failed to Inject: " + err.message);
+    alert("Injection Error", "Reason: " + err.message);
   }
 };
 
@@ -256,13 +252,16 @@ const initStudio = async function () {
  * @private
  * @param {Event} event
  */
-const _handleModuleListClick = function (event) {
+const _handleModuleListClick = async function (event) {
   const target = event.target;
   const item = target.closest(".list-item");
   if (!item || item.id) return;
 
   if (target.classList.contains("edit-item")) {
-    const name = prompt("Enter new name of Module");
+    const name = await prompt(
+      "Edit Module",
+      "Enter the new name of the Module:",
+    );
     if (name) editModuleName(item, name);
     return;
   }

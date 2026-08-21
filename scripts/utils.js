@@ -1,3 +1,5 @@
+import { alert } from "./modal.js";
+
 const EXTENSION_MODE_MAP = {
   // Web Core
   js: "ace/mode/javascript",
@@ -149,7 +151,8 @@ const isValidModuleName = function (name) {
   }
 
   alert(
-    `Invalid module name: "${name}". Module names must include a file extension, such as "example.js".`,
+    "Invalid Module Name",
+    `"${name}" is invalid.<br>Module names must include a file extension, such as "example.js".`,
   );
   return false;
 };
@@ -205,7 +208,6 @@ const getEditorModeFromName = function (name) {
   if (!name) return "ace/mode/text";
 
   const extension = name.split(".").pop().toLowerCase();
-
   return EXTENSION_MODE_MAP[extension] || "ace/mode/text";
 };
 
