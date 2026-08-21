@@ -1,0 +1,74 @@
+x-modal {
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+x-modal[showing] {
+  opacity: 1;
+}
+
+x-modal .modal-bg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+
+x-modal .content {
+  background: var(--bg-theme) !important;
+  min-width: 25vw !important;
+}
+
+x-modal .modal-title {
+  margin: 5px 0 15px;
+  padding: 0 5vw;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 3px 8px #ff00ff60;
+}
+
+x-modal .input-container {
+  gap: 5px;
+  margin-bottom: 10px;
+}
+x-modal .input-container label {
+  text-align: center !important;
+}
+x-modal label .input {
+  background: var(--shadow-theme) !important;
+}
+
+x-modal .button-ui {
+  position: relative;
+  width: 100%;
+}
+
+x-modal .modal-close {
+  position: absolute;
+  right: 0%;
+  transform: translate(25%, 20%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+x-modal .modal-close img {
+  width: 30px;
+  height: 30px;
+  transform: rotate(45deg);
+  filter: drop-shadow(0px 0px 3px #ff00ff);
+}
+[data-mode="light"] x-modal .modal-close img {
+  filter: invert(1) drop-shadow(0px 0px 3px #ff00ff);
+}
+x-modal .modal-close:hover {
+  transform: translate(25%, 20%) scale(1.1);
+  filter: drop-shadow(0px 0px 3px #ff00ff50);
+}

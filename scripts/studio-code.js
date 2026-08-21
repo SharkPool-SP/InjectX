@@ -1,3 +1,4 @@
+import { prompt } from "./modal.js";
 import { ioWrap } from "./utils.js";
 
 /* global Events */
@@ -31,12 +32,10 @@ const setup = function () {
 
   /* Add Module buttons */
   ioWrap(gui.uploadModuleFileInput, "change", _handleModuleUpload);
-  ioWrap(gui.uploadModuleBtn, "click", (_, target) => {
-    gui.uploadModuleFileInput.click();
-  });
+  ioWrap(gui.uploadModuleBtn, "click", () => gui.uploadModuleFileInput.click());
 
-  ioWrap(gui.addModuleBtn, "click", () => {
-    const name = prompt("Enter name of Module");
+  ioWrap(gui.addModuleBtn, "click", async () => {
+    const name = await prompt("Create Module", "Enter the name of the Module:");
     if (name) Events.emit("NEW_MODULE", name, "");
   });
 

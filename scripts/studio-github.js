@@ -1,3 +1,4 @@
+import { alert } from "./modal.js";
 import {
   ioWrap,
   validatePathName,
@@ -91,7 +92,10 @@ const _handleRepoFetch = async function () {
     gitState.gitFiles = directoryFiles;
     Events.emit("REPO_FETCHED");
   } catch {
-    alert(`Error: Couldn't retrieve repository data from URL: "${url}`);
+    alert(
+      "Download Error",
+      `Couldn't retrieve repository data from URL: "${url}`,
+    );
   }
 };
 
@@ -110,9 +114,9 @@ const _handleCreatePR = async function () {
 
   if (status.success) {
     window.open(status.url, "_blank");
-    alert(status.msg);
+    alert("Pull Request Success", status.msg);
   } else {
-    alert("Error creating pull request: " + status.msg);
+    alert("Pull Request Error", "Error creating pull request: " + status.msg);
   }
 };
 
